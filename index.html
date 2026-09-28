@@ -4,25 +4,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#0a0b10">
+  <meta name="theme-color" content="#07172a">
   <meta name="description" content="Politique de confidentialité officielle de Scope Call Tracker par Scope-RottW.">
   <title>Confidentialité · Scope Call Tracker</title>
   <style>
     :root{
-      --bg:#08090d;
-      --bg-soft:#0d0f16;
-      --panel:rgba(18,20,29,.78);
-      --panel-strong:#11141d;
-      --text:#f5f7fb;
-      --muted:#a6adbb;
-      --line:rgba(255,255,255,.09);
-      --accent:#8b5cf6;
-      --accent-2:#c084fc;
-      --accent-3:#22d3ee;
-      --good:#34d399;
-      --shadow:0 28px 80px rgba(0,0,0,.45);
+      --bg:#06111f;
+      --bg-2:#08182a;
+      --panel:#0c1c2f;
+      --panel-2:#10243a;
+      --panel-3:#0b2037;
+      --text:#f7fbff;
+      --muted:#a9bfd7;
+      --muted-2:#7f9bb8;
+      --line:rgba(91,163,226,.20);
+      --line-strong:rgba(0,132,255,.38);
+      --blue:#0088ff;
+      --blue-2:#0065fd;
+      --cyan:#1bd7ff;
+      --green:#53ee9a;
+      --shadow:0 26px 80px rgba(0,0,0,.34);
+      --shadow-blue:0 18px 60px rgba(0,113,255,.16);
       --radius:22px;
-      --max:1120px;
+      --max:1360px;
     }
 
     *{box-sizing:border-box}
@@ -33,9 +37,9 @@
       color:var(--text);
       font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
       background:
-        radial-gradient(circle at 12% -5%,rgba(139,92,246,.18),transparent 34rem),
-        radial-gradient(circle at 88% 5%,rgba(34,211,238,.10),transparent 30rem),
-        linear-gradient(180deg,#07080c 0%,#0a0c12 48%,#07080c 100%);
+        radial-gradient(circle at 18% -8%,rgba(0,120,255,.26),transparent 36rem),
+        radial-gradient(circle at 93% 3%,rgba(0,220,255,.14),transparent 34rem),
+        linear-gradient(180deg,#06111f 0%,#071524 46%,#06101d 100%);
       line-height:1.72;
     }
 
@@ -44,385 +48,744 @@
       position:fixed;
       inset:0;
       pointer-events:none;
-      opacity:.22;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-      background-size:40px 40px;
-      mask-image:linear-gradient(to bottom,black,transparent 75%);
+      background:
+        linear-gradient(rgba(99,173,235,.028) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(99,173,235,.028) 1px,transparent 1px);
+      background-size:46px 46px;
+      mask-image:linear-gradient(to bottom,black,transparent 82%);
+      opacity:.36;
     }
 
-    a{color:#d8b4fe;text-decoration:none}
+    body::after{
+      content:"";
+      position:fixed;
+      width:640px;
+      height:640px;
+      right:-240px;
+      top:100px;
+      border-radius:50%;
+      background:rgba(0,128,255,.08);
+      filter:blur(90px);
+      pointer-events:none;
+    }
+
+    a{color:#61c7ff;text-decoration:none}
     a:hover{color:#fff;text-decoration:underline}
-    .wrap{width:min(calc(100% - 32px),var(--max));margin:0 auto}
+    .wrap{width:min(calc(100% - 56px),var(--max));margin:0 auto}
 
     .topbar{
       position:sticky;
       top:0;
-      z-index:20;
-      backdrop-filter:blur(18px);
-      background:rgba(8,9,13,.68);
+      z-index:50;
+      background:rgba(5,17,31,.78);
       border-bottom:1px solid var(--line);
+      backdrop-filter:blur(20px);
+      box-shadow:0 10px 30px rgba(0,0,0,.12);
     }
 
     .topbar-inner{
-      min-height:68px;
+      min-height:78px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;
+      gap:24px;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:12px;
-      font-weight:800;
-      letter-spacing:.06em;
+      gap:14px;
+      min-width:0;
     }
 
-    .mark{
-      width:36px;
-      height:36px;
-      border-radius:11px;
-      display:grid;
-      place-items:center;
-      color:#fff;
-      font-size:15px;
-      font-weight:900;
-      background:linear-gradient(135deg,var(--accent),#6d28d9 55%,var(--accent-3));
-      box-shadow:0 8px 28px rgba(139,92,246,.28);
+    .scope-logo{
+      position:relative;
+      width:42px;
+      height:42px;
+      flex:0 0 42px;
     }
 
-    .topbar a.contact{
-      padding:10px 14px;
+    .scope-logo::before,
+    .scope-logo::after{
+      content:"";
+      position:absolute;
+      left:7px;
+      width:28px;
+      height:15px;
+      border-radius:7px;
+      transform:skewY(-31deg) rotate(-10deg);
+      background:linear-gradient(135deg,#19a7ff 0%,#0065fd 78%);
+      box-shadow:0 7px 25px rgba(0,118,255,.38);
+    }
+
+    .scope-logo::before{top:6px}
+    .scope-logo::after{bottom:6px;left:10px;background:linear-gradient(135deg,#0b8dff 0%,#0055ef 80%)}
+
+    .brand-copy strong{
+      display:block;
+      font-size:16px;
+      letter-spacing:.015em;
+    }
+
+    .brand-copy span{
+      display:block;
+      margin-top:1px;
+      color:var(--muted-2);
+      font-size:12px;
+    }
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .nav-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:42px;
+      padding:0 16px;
       border:1px solid var(--line);
       border-radius:12px;
-      color:var(--text);
-      background:rgba(255,255,255,.035);
-      font-size:14px;
-      font-weight:700;
+      color:#dcecff;
+      background:rgba(15,36,58,.68);
+      font-size:13px;
+      font-weight:800;
       text-decoration:none;
+      transition:.18s ease;
     }
 
-    .hero{padding:82px 0 42px}
+    .nav-btn:hover{
+      color:#fff;
+      border-color:rgba(0,136,255,.55);
+      background:rgba(0,118,255,.12);
+      text-decoration:none;
+      transform:translateY(-1px);
+    }
+
+    .nav-btn.primary{
+      border-color:rgba(0,136,255,.72);
+      background:linear-gradient(135deg,#008cff,#0064fb);
+      box-shadow:0 10px 34px rgba(0,111,255,.26);
+      color:#fff;
+    }
+
+    .hero{
+      padding:64px 0 34px;
+    }
+
+    .hero-shell{
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:50px 54px;
+      background:
+        linear-gradient(135deg,rgba(8,30,54,.97),rgba(9,22,39,.96) 58%,rgba(7,30,48,.96));
+      box-shadow:var(--shadow),var(--shadow-blue);
+    }
+
+    .hero-shell::before{
+      content:"";
+      position:absolute;
+      width:520px;
+      height:520px;
+      right:-180px;
+      top:-220px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(0,149,255,.22),transparent 67%);
+      pointer-events:none;
+    }
+
+    .hero-shell::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(0,143,255,.75),transparent);
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(0,1.45fr) minmax(330px,.55fr);
+      gap:44px;
+      align-items:center;
+    }
+
     .eyebrow{
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:7px 11px;
-      border:1px solid rgba(139,92,246,.35);
+      gap:9px;
+      min-height:34px;
+      padding:0 12px;
+      border:1px solid rgba(0,139,255,.35);
       border-radius:999px;
-      background:rgba(139,92,246,.08);
-      color:#ddd6fe;
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.1em;
+      background:rgba(0,117,255,.08);
+      color:#b9ddff;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.10em;
       text-transform:uppercase;
     }
 
     .eyebrow::before{
       content:"";
-      width:7px;height:7px;border-radius:50%;
-      background:var(--good);
-      box-shadow:0 0 0 5px rgba(52,211,153,.08);
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 0 6px rgba(83,238,154,.08),0 0 20px rgba(83,238,154,.34);
     }
 
     h1{
-      max-width:900px;
-      margin:24px 0 20px;
-      font-size:clamp(42px,7vw,78px);
-      line-height:1.02;
-      letter-spacing:-.045em;
+      max-width:930px;
+      margin:22px 0 18px;
+      font-size:clamp(46px,6vw,78px);
+      line-height:1.01;
+      letter-spacing:-.048em;
     }
 
     .gradient{
-      background:linear-gradient(92deg,#fff 0%,#ddd6fe 42%,#67e8f9 100%);
+      background:linear-gradient(100deg,#ffffff 0%,#dff2ff 38%,#55c8ff 70%,#18e4ff 100%);
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
 
     .lead{
-      max-width:780px;
+      max-width:880px;
       margin:0;
-      color:#c4cad5;
-      font-size:clamp(17px,2vw,21px);
+      color:#c3d4e6;
+      font-size:clamp(17px,1.8vw,21px);
+      line-height:1.7;
     }
 
     .meta{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin-top:28px;
+      margin-top:26px;
     }
 
     .pill{
-      padding:9px 12px;
-      border-radius:999px;
-      color:#cbd5e1;
-      background:rgba(255,255,255,.045);
+      min-height:34px;
+      display:inline-flex;
+      align-items:center;
+      padding:0 12px;
       border:1px solid var(--line);
-      font-size:13px;
-      font-weight:700;
+      border-radius:999px;
+      color:#c8ddf2;
+      background:rgba(12,37,62,.74);
+      font-size:12px;
+      font-weight:800;
     }
 
-    .trust-grid{
+    .hero-status{
+      border:1px solid var(--line-strong);
+      border-radius:22px;
+      padding:24px;
+      background:linear-gradient(180deg,rgba(12,39,67,.86),rgba(8,29,50,.86));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 16px 50px rgba(0,0,0,.18);
+    }
+
+    .status-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .status-head strong{font-size:14px}
+    .status-ready{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#80ffbd;
+      font-size:13px;
+      font-weight:900;
+    }
+
+    .status-ready::before{
+      content:"";
+      width:10px;height:10px;border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 18px rgba(83,238,154,.7);
+    }
+
+    .status-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .status-item{
+      display:grid;
+      grid-template-columns:38px 1fr;
+      gap:12px;
+      align-items:start;
+      padding:13px;
+      border:1px solid rgba(102,168,222,.16);
+      border-radius:14px;
+      background:rgba(5,23,40,.52);
+    }
+
+    .status-icon{
+      width:38px;height:38px;
+      display:grid;place-items:center;
+      border-radius:11px;
+      border:1px solid rgba(0,139,255,.28);
+      background:rgba(0,126,255,.10);
+      color:#71d7ff;
+      font-size:18px;
+      font-weight:900;
+    }
+
+    .status-item strong{display:block;font-size:13px}
+    .status-item span{display:block;margin-top:2px;color:var(--muted-2);font-size:12px;line-height:1.5}
+
+    .quick{
+      padding:22px 0 12px;
+    }
+
+    .quick-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      margin:34px 0 0;
+      gap:16px;
     }
 
-    .trust{
+    .quick-card{
+      min-height:118px;
+      padding:20px 22px;
       border:1px solid var(--line);
       border-radius:18px;
-      padding:18px;
-      background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.02));
-      box-shadow:0 12px 40px rgba(0,0,0,.14);
+      background:linear-gradient(180deg,rgba(14,37,60,.88),rgba(9,27,46,.88));
+      box-shadow:0 14px 40px rgba(0,0,0,.12);
     }
 
-    .trust strong{display:block;margin-bottom:5px;font-size:15px}
-    .trust span{color:var(--muted);font-size:13px}
-
-    .layout{
-      display:grid;
-      grid-template-columns:280px minmax(0,1fr);
-      gap:28px;
-      align-items:start;
-      padding:28px 0 90px;
-    }
-
-    .toc{
-      position:sticky;
-      top:92px;
-      border:1px solid var(--line);
-      background:rgba(15,17,24,.68);
-      backdrop-filter:blur(18px);
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow:var(--shadow);
-    }
-
-    .toc-title{
-      margin:2px 6px 12px;
-      color:#fff;
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.11em;
-      text-transform:uppercase;
-    }
-
-    .toc a{
-      display:block;
-      padding:10px 12px;
+    .quick-card .mini{
+      width:38px;height:38px;
+      display:grid;place-items:center;
+      margin-bottom:12px;
       border-radius:11px;
-      color:#aeb6c6;
-      font-size:14px;
-      font-weight:650;
+      color:#7bd7ff;
+      background:rgba(0,126,255,.10);
+      border:1px solid rgba(0,136,255,.28);
+      font-weight:900;
+    }
+
+    .quick-card strong{display:block;font-size:15px;margin-bottom:5px}
+    .quick-card span{color:var(--muted);font-size:13px;line-height:1.55}
+
+    .nav-section{
+      padding:22px 0 4px;
+    }
+
+    .section-nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      padding:14px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(8,27,47,.72);
+      backdrop-filter:blur(14px);
+    }
+
+    .section-nav a{
+      display:inline-flex;
+      min-height:40px;
+      align-items:center;
+      padding:0 14px;
+      border-radius:11px;
+      color:#b9cee3;
+      background:rgba(13,39,64,.56);
+      border:1px solid transparent;
+      font-size:13px;
+      font-weight:800;
       text-decoration:none;
     }
 
-    .toc a:hover{
+    .section-nav a:hover{
       color:#fff;
-      background:rgba(139,92,246,.10);
+      border-color:rgba(0,136,255,.36);
+      background:rgba(0,119,255,.10);
     }
 
-    .content{
-      border:1px solid var(--line);
-      background:linear-gradient(180deg,rgba(17,20,29,.90),rgba(12,14,20,.88));
-      border-radius:28px;
-      box-shadow:var(--shadow);
+    .policy{
+      padding:26px 0 90px;
+    }
+
+    .policy-grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:20px;
+    }
+
+    .card{
+      grid-column:span 6;
+      position:relative;
       overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:linear-gradient(180deg,rgba(14,36,58,.94),rgba(9,26,45,.94));
+      box-shadow:var(--shadow);
+      scroll-margin-top:110px;
     }
 
-    .content-header{
-      padding:28px 34px;
-      border-bottom:1px solid var(--line);
-      background:linear-gradient(90deg,rgba(139,92,246,.08),transparent 55%);
+    .card.wide{grid-column:span 12}
+    .card.small{grid-column:span 4}
+
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0;top:0;bottom:0;
+      width:3px;
+      background:linear-gradient(180deg,var(--blue),var(--cyan));
+      opacity:.9;
     }
 
-    .content-header strong{display:block;font-size:18px}
-    .content-header span{color:var(--muted);font-size:14px}
-
-    .section{
-      padding:34px;
-      border-bottom:1px solid var(--line);
-      scroll-margin-top:95px;
+    .card-head{
+      display:flex;
+      align-items:flex-start;
+      gap:15px;
+      padding:28px 30px 20px;
+      border-bottom:1px solid rgba(91,163,226,.13);
+      background:linear-gradient(90deg,rgba(0,119,255,.06),transparent 60%);
     }
 
-    .section:last-child{border-bottom:0}
-    .section-number{
-      display:inline-grid;
+    .num{
+      width:42px;height:42px;
+      flex:0 0 42px;
+      display:grid;
       place-items:center;
-      width:34px;height:34px;
-      margin-bottom:14px;
-      border-radius:10px;
-      color:#ede9fe;
-      background:rgba(139,92,246,.12);
-      border:1px solid rgba(139,92,246,.25);
+      border-radius:12px;
+      color:#95dcff;
+      background:rgba(0,126,255,.12);
+      border:1px solid rgba(0,136,255,.30);
+      font-size:12px;
       font-weight:900;
-      font-size:13px;
+      box-shadow:0 8px 28px rgba(0,118,255,.12);
     }
 
-    h2{
-      margin:0 0 14px;
-      font-size:clamp(24px,3vw,34px);
-      line-height:1.18;
+    .card-title h2{
+      margin:0;
+      font-size:clamp(23px,2.5vw,31px);
+      line-height:1.2;
       letter-spacing:-.025em;
     }
 
-    p{margin:0 0 16px;color:#c2c8d3}
-    p:last-child{margin-bottom:0}
+    .card-title p{
+      margin:5px 0 0;
+      color:var(--muted-2);
+      font-size:12px;
+    }
+
+    .card-body{
+      padding:24px 30px 30px;
+    }
+
+    .card-body p{
+      margin:0 0 17px;
+      color:#c3d3e3;
+      font-size:15px;
+      line-height:1.78;
+    }
+
+    .card-body p:last-child{margin-bottom:0}
 
     .callout{
-      margin-top:20px;
-      padding:18px 20px;
-      border:1px solid rgba(34,211,238,.20);
-      border-left:3px solid var(--accent-3);
-      border-radius:14px;
-      color:#cbd5e1;
-      background:rgba(34,211,238,.05);
+      margin-top:22px;
+      padding:17px 18px;
+      border:1px solid rgba(0,196,255,.24);
+      border-left:3px solid var(--cyan);
+      border-radius:13px;
+      color:#d2eaff;
+      background:linear-gradient(90deg,rgba(0,174,255,.09),rgba(0,89,160,.05));
+      font-size:14px;
     }
+
+    .contact-box{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .contact-copy strong{display:block;font-size:17px}
+    .contact-copy span{display:block;color:var(--muted);font-size:13px;margin-top:4px}
+
+    .mail{
+      display:inline-flex;
+      align-items:center;
+      min-height:44px;
+      padding:0 16px;
+      border-radius:12px;
+      color:white;
+      border:1px solid rgba(0,139,255,.55);
+      background:linear-gradient(135deg,#008cff,#0064fb);
+      box-shadow:0 12px 34px rgba(0,112,255,.22);
+      font-size:13px;
+      font-weight:900;
+      text-decoration:none;
+    }
+
+    .mail:hover{text-decoration:none;filter:brightness(1.06)}
 
     .footer{
       border-top:1px solid var(--line);
+      background:rgba(4,15,27,.54);
       padding:28px 0 42px;
-      color:#7f8795;
-      font-size:13px;
     }
 
     .footer-inner{
       display:flex;
+      align-items:center;
       justify-content:space-between;
-      gap:18px;
+      gap:20px;
       flex-wrap:wrap;
+      color:#7592ad;
+      font-size:12px;
     }
 
-    @media (max-width:860px){
-      .hero{padding-top:58px}
-      .trust-grid{grid-template-columns:1fr}
-      .layout{grid-template-columns:1fr}
-      .toc{position:relative;top:auto}
-      .section,.content-header{padding:26px 22px}
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#b9cee3;
+      font-weight:800;
     }
 
-    @media (max-width:560px){
-      .wrap{width:min(calc(100% - 22px),var(--max))}
-      .topbar-inner{min-height:60px}
-      .brand span:last-child{font-size:13px}
-      .topbar a.contact{padding:8px 10px;font-size:12px}
-      .hero{padding-top:44px}
-      h1{font-size:43px}
+    .footer-dot{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--blue);
+      box-shadow:0 0 14px rgba(0,136,255,.75);
+    }
+
+    @media (max-width:1060px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-status{max-width:none}
+      .quick-grid{grid-template-columns:1fr 1fr}
+      .card,.card.small{grid-column:span 12}
+    }
+
+    @media (max-width:720px){
+      .wrap{width:min(calc(100% - 28px),var(--max))}
+      .topbar-inner{min-height:68px}
+      .brand-copy span{display:none}
+      .top-actions .nav-btn:not(.primary){display:none}
+      .hero{padding-top:34px}
+      .hero-shell{padding:34px 24px;border-radius:22px}
+      h1{font-size:45px}
+      .quick-grid{grid-template-columns:1fr}
+      .section-nav{overflow-x:auto;flex-wrap:nowrap;padding:10px}
+      .section-nav a{white-space:nowrap}
+      .card-head,.card-body{padding-left:22px;padding-right:22px}
     }
   </style>
 </head>
 <body>
-  <nav class="topbar" aria-label="Navigation principale">
+  <header class="topbar">
     <div class="wrap topbar-inner">
       <div class="brand">
-        <div class="mark">SR</div>
-        <span>SCOPE-ROTTW</span>
+        <div class="scope-logo" aria-hidden="true"></div>
+        <div class="brand-copy">
+          <strong>Scope Call Tracker</strong>
+          <span>by Scope-RottW</span>
+        </div>
       </div>
-      <a class="contact" href="mailto:stylance69@gmail.com">Contact confidentialité</a>
+      <div class="top-actions">
+        <a class="nav-btn" href="#policy">Politique</a>
+        <a class="nav-btn primary" href="mailto:stylance69@gmail.com">Contact confidentialité</a>
+      </div>
     </div>
-  </nav>
+  </header>
 
   <main>
     <section class="hero">
       <div class="wrap">
-        <span class="eyebrow">Politique de confidentialité officielle</span>
-        <h1><span class="gradient">Vos données restent sous votre contrôle.</span></h1>
-        <p class="lead">Scope Call Tracker fonctionne autour d’un principe simple : traiter uniquement les informations nécessaires au fonctionnement de l’outil, en privilégiant le traitement local sur votre appareil.</p>
+        <div class="hero-shell">
+          <div class="hero-grid">
+            <div>
+              <span class="eyebrow">Politique de confidentialité officielle</span>
+              <h1><span class="gradient">Vos données restent sous votre contrôle.</span></h1>
+              <p class="lead">Scope Call Tracker traite uniquement les informations nécessaires au fonctionnement de l’outil et privilégie un fonctionnement local, transparent et contrôlé depuis votre appareil.</p>
 
-        <div class="meta" aria-label="Informations de version">
-          <span class="pill">Mise à jour : 23 septembre 2026</span>
-          <span class="pill">Extension 0.6.0</span>
-          <span class="pill">Scope Call Tracker</span>
-        </div>
+              <div class="meta">
+                <span class="pill">Mise à jour · 23 septembre 2026</span>
+                <span class="pill">Extension · 0.6.0</span>
+                <span class="pill">Scope Call Tracker</span>
+              </div>
+            </div>
 
-        <div class="trust-grid">
-          <div class="trust">
-            <strong>Traitement local</strong>
-            <span>Les données sont transmises au logiciel installé sur le même PC.</span>
-          </div>
-          <div class="trust">
-            <strong>Aucune revente</strong>
-            <span>Les données ne sont ni vendues ni utilisées pour la publicité.</span>
-          </div>
-          <div class="trust">
-            <strong>Contrôle utilisateur</strong>
-            <span>Lecture, réponses et autorisations dépendent de votre configuration.</span>
+            <aside class="hero-status">
+              <div class="status-head">
+                <strong>Protection des données</strong>
+                <span class="status-ready">Actif</span>
+              </div>
+              <div class="status-list">
+                <div class="status-item">
+                  <div class="status-icon">L</div>
+                  <div>
+                    <strong>Traitement local</strong>
+                    <span>Les données restent liées au fonctionnement de Scope sur votre PC.</span>
+                  </div>
+                </div>
+                <div class="status-item">
+                  <div class="status-icon">0</div>
+                  <div>
+                    <strong>Aucune revente</strong>
+                    <span>Pas de vente des données ni d’utilisation publicitaire.</span>
+                  </div>
+                </div>
+                <div class="status-item">
+                  <div class="status-icon">✓</div>
+                  <div>
+                    <strong>Contrôle utilisateur</strong>
+                    <span>Lecture et réponses dépendent de vos autorisations et réglages.</span>
+                  </div>
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="wrap layout">
-      <aside class="toc">
-        <div class="toc-title">Sommaire</div>
-        <a href="#editeur">Éditeur et contact</a>
-        <a href="#lecture">Ce que lit l’extension</a>
-        <a href="#destination">Où vont ces données</a>
-        <a href="#reponses">Réponses facultatives</a>
-        <a href="#conservation">Conservation et suppression</a>
-        <a href="#evolutions">Questions et évolutions</a>
-      </aside>
+    <section class="quick">
+      <div class="wrap quick-grid">
+        <div class="quick-card">
+          <div class="mini">01</div>
+          <strong>Lecture ciblée</strong>
+          <span>L’extension lit uniquement les salons configurés et activés par l’utilisateur.</span>
+        </div>
+        <div class="quick-card">
+          <div class="mini">02</div>
+          <strong>Pas de serveur publicitaire</strong>
+          <span>Aucun outil publicitaire ou service d’analyse de l’éditeur ne reçoit ces données.</span>
+        </div>
+        <div class="quick-card">
+          <div class="mini">03</div>
+          <strong>Réponses facultatives</strong>
+          <span>La rédaction est désactivée par défaut et doit être autorisée explicitement.</span>
+        </div>
+      </div>
+    </section>
 
-      <article class="content">
-        <header class="content-header">
-          <strong>Scope Call Tracker · Confidentialité</strong>
-          <span>Version lisible et structurée de la politique applicable à l’extension.</span>
-        </header>
+    <section class="nav-section">
+      <div class="wrap">
+        <nav class="section-nav" aria-label="Sommaire de la politique">
+          <a href="#editeur">Éditeur & contact</a>
+          <a href="#lecture">Données lues</a>
+          <a href="#destination">Destination</a>
+          <a href="#reponses">Réponses</a>
+          <a href="#conservation">Conservation</a>
+          <a href="#evolutions">Évolutions</a>
+        </nav>
+      </div>
+    </section>
 
-        <section class="section" id="editeur">
-          <div class="section-number">01</div>
-          <h2>Éditeur et contact</h2>
-          <p>Scope-RottW · <a href="mailto:stylance69@gmail.com">stylance69@gmail.com</a>.</p>
-        </section>
+    <section class="policy" id="policy">
+      <div class="wrap policy-grid">
+        <article class="card small" id="editeur">
+          <div class="card-head">
+            <div class="num">01</div>
+            <div class="card-title">
+              <h2>Éditeur et contact</h2>
+              <p>Responsable de la page et contact confidentialité</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="contact-box">
+              <div class="contact-copy">
+                <strong>Scope-RottW</strong>
+                <span>Scope Call Tracker</span>
+              </div>
+              <a class="mail" href="mailto:stylance69@gmail.com">stylance69@gmail.com</a>
+            </div>
+          </div>
+        </article>
 
-        <section class="section" id="lecture">
-          <div class="section-number">02</div>
-          <h2>Ce que lit l’extension</h2>
-          <p>Après configuration d’un salon et autorisation de son site, l’extension lit dans le chat choisi les pseudos, textes des messages et identifiants de messages disponibles. Elle utilise l’adresse de la page pour identifier le bon salon. Elle peut lire le pseudo de votre compte connecté quand le site l’affiche, pour éviter de répondre à vos propres demandes.</p>
-          <p>L’autorisation du navigateur porte sur le site ; le lecteur est limité aux adresses de salons que vous avez configurées et activées. Il ne parcourt pas votre historique de navigation et ne consulte pas les cookies, mots de passe ou requêtes réseau. Il ne capture pas l’écran. L’OCR est une fonction séparée du logiciel Windows.</p>
-          <div class="callout">L’extension agit uniquement dans le cadre des salons configurés et autorisés par l’utilisateur.</div>
-        </section>
+        <article class="card wide" id="lecture">
+          <div class="card-head">
+            <div class="num">02</div>
+            <div class="card-title">
+              <h2>Ce que lit l’extension</h2>
+              <p>Informations nécessaires au fonctionnement des salons configurés</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>Après configuration d’un salon et autorisation de son site, l’extension lit dans le chat choisi les pseudos, textes des messages et identifiants de messages disponibles. Elle utilise l’adresse de la page pour identifier le bon salon. Elle peut lire le pseudo de votre compte connecté quand le site l’affiche, pour éviter de répondre à vos propres demandes.</p>
+            <p>L’autorisation du navigateur porte sur le site ; le lecteur est limité aux adresses de salons que vous avez configurées et activées. Il ne parcourt pas votre historique de navigation et ne consulte pas les cookies, mots de passe ou requêtes réseau. Il ne capture pas l’écran. L’OCR est une fonction séparée du logiciel Windows.</p>
+            <div class="callout">L’extension agit uniquement dans le cadre des salons configurés et autorisés par l’utilisateur.</div>
+          </div>
+        </article>
 
-        <section class="section" id="destination">
-          <div class="section-number">03</div>
-          <h2>Où vont ces données</h2>
-          <p>Les messages et informations du salon sont transmis au logiciel Scope Call Tracker installé sur le même PC, par la liaison native locale du navigateur. Aucun serveur de l’éditeur, outil publicitaire ou service d’analyse ne reçoit ces données. Elles ne sont ni vendues ni utilisées pour la publicité.</p>
-          <p>Le navigateur conserve localement les profils, adresses de salons, sélecteurs et autorisations de rédaction. Scope conserve localement les calls, leur historique, les réglages, les éléments nécessaires au suivi des doublons et les reçus des réponses. Les captures OCR ne sont pas enregistrées par l’extension.</p>
-        </section>
+        <article class="card" id="destination">
+          <div class="card-head">
+            <div class="num">03</div>
+            <div class="card-title">
+              <h2>Où vont ces données</h2>
+              <p>Transmission et stockage local</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>Les messages et informations du salon sont transmis au logiciel Scope Call Tracker installé sur le même PC, par la liaison native locale du navigateur. Aucun serveur de l’éditeur, outil publicitaire ou service d’analyse ne reçoit ces données. Elles ne sont ni vendues ni utilisées pour la publicité.</p>
+            <p>Le navigateur conserve localement les profils, adresses de salons, sélecteurs et autorisations de rédaction. Scope conserve localement les calls, leur historique, les réglages, les éléments nécessaires au suivi des doublons et les reçus des réponses. Les captures OCR ne sont pas enregistrées par l’extension.</p>
+          </div>
+        </article>
 
-        <section class="section" id="reponses">
-          <div class="section-number">04</div>
-          <h2>Réponses facultatives</h2>
-          <p>Les réponses sont désactivées par défaut. Vous devez autoriser la rédaction dans le profil du salon et choisir le mode manuel ou automatique dans Scope. Le mode automatique envoie des réponses fixes sans validation de chaque message. En mode manuel, chaque réponse nécessite votre clic dans Scope.</p>
-          <p>Quand vous activez l’envoi, la réponse est publiée sur le site choisi avec le compte connecté dans le navigateur. Elle devient visible selon les règles de ce site. L’extension utilise son champ de rédaction et son bouton d’envoi ; un brouillon ou une saisie en cours bloque cette opération. Le site destinataire applique sa propre politique de confidentialité.</p>
-        </section>
+        <article class="card" id="reponses">
+          <div class="card-head">
+            <div class="num">04</div>
+            <div class="card-title">
+              <h2>Réponses facultatives</h2>
+              <p>Modes manuel et automatique</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>Les réponses sont désactivées par défaut. Vous devez autoriser la rédaction dans le profil du salon et choisir le mode manuel ou automatique dans Scope. Le mode automatique envoie des réponses fixes sans validation de chaque message. En mode manuel, chaque réponse nécessite votre clic dans Scope.</p>
+            <p>Quand vous activez l’envoi, la réponse est publiée sur le site choisi avec le compte connecté dans le navigateur. Elle devient visible selon les règles de ce site. L’extension utilise son champ de rédaction et son bouton d’envoi ; un brouillon ou une saisie en cours bloque cette opération. Le site destinataire applique sa propre politique de confidentialité.</p>
+          </div>
+        </article>
 
-        <section class="section" id="conservation">
-          <div class="section-number">05</div>
-          <h2>Conservation et suppression</h2>
-          <p>Les profils restent sur votre appareil jusqu’à leur suppression ou la désinstallation de l’extension. Les données du logiciel Windows sont conservées séparément, y compris après désinstallation ou mise à jour, pour préserver l’historique. Vous pouvez supprimer manuellement vos données dans Scope ou, logiciel fermé et après sauvegarde si souhaitée, son dossier utilisateur ScopeCallTracker. Désinstaller seulement l’extension n’efface pas l’historique de Scope.</p>
-          <p>Retirer l’autorisation d’un site bloque sa lecture par l’extension. Pause lecture dans Scope suspend le traitement. Les messages déjà publiés sur un site doivent être supprimés via les fonctions de ce site lorsqu’elles le permettent.</p>
-        </section>
+        <article class="card wide" id="conservation">
+          <div class="card-head">
+            <div class="num">05</div>
+            <div class="card-title">
+              <h2>Conservation et suppression</h2>
+              <p>Vous gardez la maîtrise de vos données locales</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>Les profils restent sur votre appareil jusqu’à leur suppression ou la désinstallation de l’extension. Les données du logiciel Windows sont conservées séparément, y compris après désinstallation ou mise à jour, pour préserver l’historique. Vous pouvez supprimer manuellement vos données dans Scope ou, logiciel fermé et après sauvegarde si souhaitée, son dossier utilisateur ScopeCallTracker. Désinstaller seulement l’extension n’efface pas l’historique de Scope.</p>
+            <p>Retirer l’autorisation d’un site bloque sa lecture par l’extension. Pause lecture dans Scope suspend le traitement. Les messages déjà publiés sur un site doivent être supprimés via les fonctions de ce site lorsqu’elles le permettent.</p>
+          </div>
+        </article>
 
-        <section class="section" id="evolutions">
-          <div class="section-number">06</div>
-          <h2>Questions et évolutions</h2>
-          <p>Contactez Scope-RottW à l’adresse ci-dessus pour toute question sur ces traitements. Une évolution de la collecte ou de la transmission sera décrite dans une mise à jour de cette politique et soumise aux autorisations nécessaires.</p>
-        </section>
-      </article>
-    </div>
+        <article class="card wide" id="evolutions">
+          <div class="card-head">
+            <div class="num">06</div>
+            <div class="card-title">
+              <h2>Questions et évolutions</h2>
+              <p>Transparence sur les changements futurs</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>Contactez Scope-RottW à l’adresse ci-dessus pour toute question sur ces traitements. Une évolution de la collecte ou de la transmission sera décrite dans une mise à jour de cette politique et soumise aux autorisations nécessaires.</p>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
     <div class="wrap footer-inner">
-      <span>© 2026 Scope-RottW · Scope Call Tracker</span>
-      <span>Politique de confidentialité · Extension 0.6.0</span>
+      <div class="footer-brand"><span class="footer-dot"></span> Scope-RottW · Scope Call Tracker</div>
+      <div>Politique de confidentialité · Extension 0.6.0 · 2026</div>
     </div>
   </footer>
 </body>
