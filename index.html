@@ -300,54 +300,84 @@
     }
 
     .status-head strong{font-size:14px}
-    .status-ready{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      color:#80ffbd;
-      font-size:13px;
-      font-weight:900;
-    }
-
-    .status-ready::before{
-      content:"";
-      width:10px;height:10px;border-radius:50%;
-      background:var(--green);
-      box-shadow:0 0 18px rgba(83,238,154,.7);
-    }
-
     .status-list{
       display:grid;
       gap:12px;
     }
 
     .status-item{
-      display:grid;
-      grid-template-columns:38px 1fr;
-      gap:12px;
-      align-items:start;
-      padding:13px;
+      padding:15px 16px;
       border:1px solid rgba(102,168,222,.16);
       border-radius:14px;
       background:rgba(5,23,40,.52);
     }
 
-    .status-icon{
-      width:38px;height:38px;
-      display:grid;place-items:center;
-      border-radius:11px;
-      border:1px solid rgba(0,139,255,.28);
-      background:rgba(0,126,255,.10);
-      color:#71d7ff;
-      font-size:18px;
-      font-weight:900;
-    }
-
     .status-item strong{display:block;font-size:13px}
     .status-item span{display:block;margin-top:2px;color:var(--muted-2);font-size:12px;line-height:1.5}
 
+    .publisher{
+      padding:4px 0 6px;
+      scroll-margin-top:110px;
+    }
+
+    .publisher-card{
+      display:grid;
+      grid-template-columns:minmax(0,1.2fr) minmax(420px,.8fr);
+      gap:26px;
+      align-items:center;
+      padding:22px 26px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:linear-gradient(180deg,rgba(14,37,60,.90),rgba(8,27,47,.90));
+      box-shadow:0 14px 40px rgba(0,0,0,.12);
+    }
+
+    .publisher-main strong{
+      display:block;
+      margin:2px 0 3px;
+      font-size:19px;
+    }
+
+    .publisher-main > span:last-child{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .publisher-meta{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      padding-left:26px;
+      border-left:1px solid var(--line);
+    }
+
+    .publisher-meta > div{
+      min-width:0;
+    }
+
+    .publisher-label{
+      display:block;
+      margin-bottom:5px;
+      color:var(--muted-2);
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .publisher-meta a,
+    .publisher-meta strong{
+      display:block;
+      color:#e9f6ff;
+      font-size:13px;
+      font-weight:800;
+      overflow-wrap:anywhere;
+    }
+
+    .publisher-meta a{color:#61c7ff}
+
     .quick{
-      padding:22px 0 12px;
+      padding:18px 0 12px;
     }
 
     .quick-grid{
@@ -365,18 +395,7 @@
       box-shadow:0 14px 40px rgba(0,0,0,.12);
     }
 
-    .quick-card .mini{
-      width:38px;height:38px;
-      display:grid;place-items:center;
-      margin-bottom:12px;
-      border-radius:11px;
-      color:#7bd7ff;
-      background:rgba(0,126,255,.10);
-      border:1px solid rgba(0,136,255,.28);
-      font-weight:900;
-    }
-
-    .quick-card strong{display:block;font-size:15px;margin-bottom:5px}
+    .quick-card strong{display:block;font-size:17px;margin-bottom:8px}
     .quick-card span{color:var(--muted);font-size:13px;line-height:1.55}
 
     .nav-section{
@@ -448,26 +467,10 @@
     }
 
     .card-head{
-      display:flex;
-      align-items:flex-start;
-      gap:15px;
+      display:block;
       padding:28px 30px 20px;
       border-bottom:1px solid rgba(91,163,226,.13);
       background:linear-gradient(90deg,rgba(0,119,255,.06),transparent 60%);
-    }
-
-    .num{
-      width:42px;height:42px;
-      flex:0 0 42px;
-      display:grid;
-      place-items:center;
-      border-radius:12px;
-      color:#95dcff;
-      background:rgba(0,126,255,.12);
-      border:1px solid rgba(0,136,255,.30);
-      font-size:12px;
-      font-weight:900;
-      box-shadow:0 8px 28px rgba(0,118,255,.12);
     }
 
     .card-title h2{
@@ -568,6 +571,8 @@
     @media (max-width:1060px){
       .hero-grid{grid-template-columns:1fr}
       .hero-status{max-width:none}
+      .publisher-card{grid-template-columns:1fr}
+      .publisher-meta{padding-left:0;padding-top:18px;border-left:0;border-top:1px solid var(--line)}
       .quick-grid{grid-template-columns:1fr 1fr}
       .card,.card.small{grid-column:span 12}
     }
@@ -580,6 +585,8 @@
       .hero{padding-top:34px}
       .hero-shell{padding:34px 24px;border-radius:22px}
       h1{font-size:45px}
+      .publisher-card{padding:20px}
+      .publisher-meta{grid-template-columns:1fr}
       .quick-grid{grid-template-columns:1fr}
       .section-nav{overflow-x:auto;flex-wrap:nowrap;padding:10px}
       .section-nav a{white-space:nowrap}
@@ -623,29 +630,25 @@
 
             <aside class="hero-status">
               <div class="status-head">
-                <strong>Protection des données</strong>
-                <span class="status-ready">Actif</span>
+                <strong>Principes décrits dans cette politique</strong>
               </div>
               <div class="status-list">
                 <div class="status-item">
-                  <div class="status-icon">L</div>
                   <div>
                     <strong>Traitement local</strong>
-                    <span>Les données restent liées au fonctionnement de Scope sur votre PC.</span>
+                    <span>Les messages et informations du salon sont transmis au logiciel Scope Call Tracker installé sur le même PC.</span>
                   </div>
                 </div>
                 <div class="status-item">
-                  <div class="status-icon">0</div>
                   <div>
-                    <strong>Aucune revente</strong>
-                    <span>Pas de vente des données ni d’utilisation publicitaire.</span>
+                    <strong>Aucune utilisation publicitaire</strong>
+                    <span>Selon cette politique, les données ne sont ni vendues ni utilisées pour la publicité.</span>
                   </div>
                 </div>
                 <div class="status-item">
-                  <div class="status-icon">✓</div>
                   <div>
-                    <strong>Contrôle utilisateur</strong>
-                    <span>Lecture et réponses dépendent de vos autorisations et réglages.</span>
+                    <strong>Contrôle par vos réglages</strong>
+                    <span>Lecture et réponses dépendent des salons, autorisations et modes que vous configurez.</span>
                   </div>
                 </div>
               </div>
@@ -655,20 +658,39 @@
       </div>
     </section>
 
+    <section class="publisher" id="editeur">
+      <div class="wrap">
+        <div class="publisher-card">
+          <div class="publisher-main">
+            <span class="publisher-label">Éditeur</span>
+            <strong>Scope-RottW</strong>
+            <span>Politique de confidentialité de Scope Call Tracker</span>
+          </div>
+          <div class="publisher-meta">
+            <div>
+              <span class="publisher-label">Contact confidentialité</span>
+              <a href="mailto:stylance69@gmail.com">stylance69@gmail.com</a>
+            </div>
+            <div>
+              <span class="publisher-label">Dernière mise à jour</span>
+              <strong>23 septembre 2026</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="quick">
       <div class="wrap quick-grid">
         <div class="quick-card">
-          <div class="mini">01</div>
           <strong>Lecture ciblée</strong>
           <span>L’extension lit uniquement les salons configurés et activés par l’utilisateur.</span>
         </div>
         <div class="quick-card">
-          <div class="mini">02</div>
           <strong>Pas de serveur publicitaire</strong>
           <span>Aucun outil publicitaire ou service d’analyse de l’éditeur ne reçoit ces données.</span>
         </div>
         <div class="quick-card">
-          <div class="mini">03</div>
           <strong>Réponses facultatives</strong>
           <span>La rédaction est désactivée par défaut et doit être autorisée explicitement.</span>
         </div>
@@ -678,40 +700,20 @@
     <section class="nav-section">
       <div class="wrap">
         <nav class="section-nav" aria-label="Sommaire de la politique">
-          <a href="#editeur">Éditeur & contact</a>
           <a href="#lecture">Données lues</a>
           <a href="#destination">Destination</a>
           <a href="#reponses">Réponses</a>
           <a href="#conservation">Conservation</a>
           <a href="#evolutions">Évolutions</a>
+          <a href="#editeur">Éditeur & contact</a>
         </nav>
       </div>
     </section>
 
     <section class="policy" id="policy">
       <div class="wrap policy-grid">
-        <article class="card small" id="editeur">
-          <div class="card-head">
-            <div class="num">01</div>
-            <div class="card-title">
-              <h2>Éditeur et contact</h2>
-              <p>Responsable de la page et contact confidentialité</p>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="contact-box">
-              <div class="contact-copy">
-                <strong>Scope-RottW</strong>
-                <span>Scope Call Tracker</span>
-              </div>
-              <a class="mail" href="mailto:stylance69@gmail.com">stylance69@gmail.com</a>
-            </div>
-          </div>
-        </article>
-
         <article class="card wide" id="lecture">
           <div class="card-head">
-            <div class="num">02</div>
             <div class="card-title">
               <h2>Ce que lit l’extension</h2>
               <p>Informations nécessaires au fonctionnement des salons configurés</p>
@@ -726,7 +728,6 @@
 
         <article class="card" id="destination">
           <div class="card-head">
-            <div class="num">03</div>
             <div class="card-title">
               <h2>Où vont ces données</h2>
               <p>Transmission et stockage local</p>
@@ -740,7 +741,6 @@
 
         <article class="card" id="reponses">
           <div class="card-head">
-            <div class="num">04</div>
             <div class="card-title">
               <h2>Réponses facultatives</h2>
               <p>Modes manuel et automatique</p>
@@ -754,7 +754,6 @@
 
         <article class="card wide" id="conservation">
           <div class="card-head">
-            <div class="num">05</div>
             <div class="card-title">
               <h2>Conservation et suppression</h2>
               <p>Vous gardez la maîtrise de vos données locales</p>
@@ -768,14 +767,13 @@
 
         <article class="card wide" id="evolutions">
           <div class="card-head">
-            <div class="num">06</div>
             <div class="card-title">
               <h2>Questions et évolutions</h2>
               <p>Transparence sur les changements futurs</p>
             </div>
           </div>
           <div class="card-body">
-            <p>Contactez Scope-RottW à l’adresse ci-dessus pour toute question sur ces traitements. Une évolution de la collecte ou de la transmission sera décrite dans une mise à jour de cette politique et soumise aux autorisations nécessaires.</p>
+            <p>Contactez Scope-RottW à l’adresse <a href="mailto:stylance69@gmail.com">stylance69@gmail.com</a> pour toute question sur ces traitements. Une évolution de la collecte ou de la transmission sera décrite dans une mise à jour de cette politique et soumise aux autorisations nécessaires.</p>
           </div>
         </article>
       </div>
