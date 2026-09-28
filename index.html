@@ -1,1 +1,429 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Confidentialité · Scope Call Tracker</title></head><body><main><header><small>SCOPE-ROTTW</small><h1>Vos données restent sous votre contrôle</h1><p>Politique de confidentialité — 23 septembre 2026 · Extension 0.6.0</p></header><section><h2>Éditeur et contact</h2><p>Scope-RottW · <a href="mailto:stylance69@gmail.com">stylance69@gmail.com</a>.</p><h2>Ce que lit l’extension</h2><p>Après configuration d’un salon et autorisation de son site, l’extension lit dans le chat choisi les pseudos, textes des messages et identifiants de messages disponibles. Elle utilise l’adresse de la page pour identifier le bon salon. Elle peut lire le pseudo de votre compte connecté quand le site l’affiche, pour éviter de répondre à vos propres demandes.</p><p>L’autorisation du navigateur porte sur le site ; le lecteur est limité aux adresses de salons que vous avez configurées et activées. Il ne parcourt pas votre historique de navigation et ne consulte pas les cookies, mots de passe ou requêtes réseau. Il ne capture pas l’écran. L’OCR est une fonction séparée du logiciel Windows.</p><h2>Où vont ces données</h2><p>Les messages et informations du salon sont transmis au logiciel Scope Call Tracker installé sur le même PC, par la liaison native locale du navigateur. Aucun serveur de l’éditeur, outil publicitaire ou service d’analyse ne reçoit ces données. Elles ne sont ni vendues ni utilisées pour la publicité.</p><p>Le navigateur conserve localement les profils, adresses de salons, sélecteurs et autorisations de rédaction. Scope conserve localement les calls, leur historique, les réglages, les éléments nécessaires au suivi des doublons et les reçus des réponses. Les captures OCR ne sont pas enregistrées par l’extension.</p><h2>Réponses facultatives</h2><p>Les réponses sont désactivées par défaut. Vous devez autoriser la rédaction dans le profil du salon et choisir le mode manuel ou automatique dans Scope. Le mode automatique envoie des réponses fixes sans validation de chaque message. En mode manuel, chaque réponse nécessite votre clic dans Scope.</p><p>Quand vous activez l’envoi, la réponse est publiée sur le site choisi avec le compte connecté dans le navigateur. Elle devient visible selon les règles de ce site. L’extension utilise son champ de rédaction et son bouton d’envoi ; un brouillon ou une saisie en cours bloque cette opération. Le site destinataire applique sa propre politique de confidentialité.</p><h2>Conservation et suppression</h2><p>Les profils restent sur votre appareil jusqu’à leur suppression ou la désinstallation de l’extension. Les données du logiciel Windows sont conservées séparément, y compris après désinstallation ou mise à jour, pour préserver l’historique. Vous pouvez supprimer manuellement vos données dans Scope ou, logiciel fermé et après sauvegarde si souhaitée, son dossier utilisateur ScopeCallTracker. Désinstaller seulement l’extension n’efface pas l’historique de Scope.</p><p>Retirer l’autorisation d’un site bloque sa lecture par l’extension. Pause lecture dans Scope suspend le traitement. Les messages déjà publiés sur un site doivent être supprimés via les fonctions de ce site lorsqu’elles le permettent.</p><h2>Questions et évolutions</h2><p>Contactez Scope-RottW à l’adresse ci-dessus pour toute question sur ces traitements. Une évolution de la collecte ou de la transmission sera décrite dans une mise à jour de cette politique et soumise aux autorisations nécessaires.</p></section></main></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0b10">
+  <meta name="description" content="Politique de confidentialité officielle de Scope Call Tracker par Scope-RottW.">
+  <title>Confidentialité · Scope Call Tracker</title>
+  <style>
+    :root{
+      --bg:#08090d;
+      --bg-soft:#0d0f16;
+      --panel:rgba(18,20,29,.78);
+      --panel-strong:#11141d;
+      --text:#f5f7fb;
+      --muted:#a6adbb;
+      --line:rgba(255,255,255,.09);
+      --accent:#8b5cf6;
+      --accent-2:#c084fc;
+      --accent-3:#22d3ee;
+      --good:#34d399;
+      --shadow:0 28px 80px rgba(0,0,0,.45);
+      --radius:22px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 12% -5%,rgba(139,92,246,.18),transparent 34rem),
+        radial-gradient(circle at 88% 5%,rgba(34,211,238,.10),transparent 30rem),
+        linear-gradient(180deg,#07080c 0%,#0a0c12 48%,#07080c 100%);
+      line-height:1.72;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:40px 40px;
+      mask-image:linear-gradient(to bottom,black,transparent 75%);
+    }
+
+    a{color:#d8b4fe;text-decoration:none}
+    a:hover{color:#fff;text-decoration:underline}
+    .wrap{width:min(calc(100% - 32px),var(--max));margin:0 auto}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(18px);
+      background:rgba(8,9,13,.68);
+      border-bottom:1px solid var(--line);
+    }
+
+    .topbar-inner{
+      min-height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:.06em;
+    }
+
+    .mark{
+      width:36px;
+      height:36px;
+      border-radius:11px;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-size:15px;
+      font-weight:900;
+      background:linear-gradient(135deg,var(--accent),#6d28d9 55%,var(--accent-3));
+      box-shadow:0 8px 28px rgba(139,92,246,.28);
+    }
+
+    .topbar a.contact{
+      padding:10px 14px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--text);
+      background:rgba(255,255,255,.035);
+      font-size:14px;
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    .hero{padding:82px 0 42px}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 11px;
+      border:1px solid rgba(139,92,246,.35);
+      border-radius:999px;
+      background:rgba(139,92,246,.08);
+      color:#ddd6fe;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:7px;height:7px;border-radius:50%;
+      background:var(--good);
+      box-shadow:0 0 0 5px rgba(52,211,153,.08);
+    }
+
+    h1{
+      max-width:900px;
+      margin:24px 0 20px;
+      font-size:clamp(42px,7vw,78px);
+      line-height:1.02;
+      letter-spacing:-.045em;
+    }
+
+    .gradient{
+      background:linear-gradient(92deg,#fff 0%,#ddd6fe 42%,#67e8f9 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .lead{
+      max-width:780px;
+      margin:0;
+      color:#c4cad5;
+      font-size:clamp(17px,2vw,21px);
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:28px;
+    }
+
+    .pill{
+      padding:9px 12px;
+      border-radius:999px;
+      color:#cbd5e1;
+      background:rgba(255,255,255,.045);
+      border:1px solid var(--line);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .trust-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin:34px 0 0;
+    }
+
+    .trust{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.02));
+      box-shadow:0 12px 40px rgba(0,0,0,.14);
+    }
+
+    .trust strong{display:block;margin-bottom:5px;font-size:15px}
+    .trust span{color:var(--muted);font-size:13px}
+
+    .layout{
+      display:grid;
+      grid-template-columns:280px minmax(0,1fr);
+      gap:28px;
+      align-items:start;
+      padding:28px 0 90px;
+    }
+
+    .toc{
+      position:sticky;
+      top:92px;
+      border:1px solid var(--line);
+      background:rgba(15,17,24,.68);
+      backdrop-filter:blur(18px);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .toc-title{
+      margin:2px 6px 12px;
+      color:#fff;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+    }
+
+    .toc a{
+      display:block;
+      padding:10px 12px;
+      border-radius:11px;
+      color:#aeb6c6;
+      font-size:14px;
+      font-weight:650;
+      text-decoration:none;
+    }
+
+    .toc a:hover{
+      color:#fff;
+      background:rgba(139,92,246,.10);
+    }
+
+    .content{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,rgba(17,20,29,.90),rgba(12,14,20,.88));
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .content-header{
+      padding:28px 34px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(90deg,rgba(139,92,246,.08),transparent 55%);
+    }
+
+    .content-header strong{display:block;font-size:18px}
+    .content-header span{color:var(--muted);font-size:14px}
+
+    .section{
+      padding:34px;
+      border-bottom:1px solid var(--line);
+      scroll-margin-top:95px;
+    }
+
+    .section:last-child{border-bottom:0}
+    .section-number{
+      display:inline-grid;
+      place-items:center;
+      width:34px;height:34px;
+      margin-bottom:14px;
+      border-radius:10px;
+      color:#ede9fe;
+      background:rgba(139,92,246,.12);
+      border:1px solid rgba(139,92,246,.25);
+      font-weight:900;
+      font-size:13px;
+    }
+
+    h2{
+      margin:0 0 14px;
+      font-size:clamp(24px,3vw,34px);
+      line-height:1.18;
+      letter-spacing:-.025em;
+    }
+
+    p{margin:0 0 16px;color:#c2c8d3}
+    p:last-child{margin-bottom:0}
+
+    .callout{
+      margin-top:20px;
+      padding:18px 20px;
+      border:1px solid rgba(34,211,238,.20);
+      border-left:3px solid var(--accent-3);
+      border-radius:14px;
+      color:#cbd5e1;
+      background:rgba(34,211,238,.05);
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:28px 0 42px;
+      color:#7f8795;
+      font-size:13px;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width:860px){
+      .hero{padding-top:58px}
+      .trust-grid{grid-template-columns:1fr}
+      .layout{grid-template-columns:1fr}
+      .toc{position:relative;top:auto}
+      .section,.content-header{padding:26px 22px}
+    }
+
+    @media (max-width:560px){
+      .wrap{width:min(calc(100% - 22px),var(--max))}
+      .topbar-inner{min-height:60px}
+      .brand span:last-child{font-size:13px}
+      .topbar a.contact{padding:8px 10px;font-size:12px}
+      .hero{padding-top:44px}
+      h1{font-size:43px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="Navigation principale">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <div class="mark">SR</div>
+        <span>SCOPE-ROTTW</span>
+      </div>
+      <a class="contact" href="mailto:stylance69@gmail.com">Contact confidentialité</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Politique de confidentialité officielle</span>
+        <h1><span class="gradient">Vos données restent sous votre contrôle.</span></h1>
+        <p class="lead">Scope Call Tracker fonctionne autour d’un principe simple : traiter uniquement les informations nécessaires au fonctionnement de l’outil, en privilégiant le traitement local sur votre appareil.</p>
+
+        <div class="meta" aria-label="Informations de version">
+          <span class="pill">Mise à jour : 23 septembre 2026</span>
+          <span class="pill">Extension 0.6.0</span>
+          <span class="pill">Scope Call Tracker</span>
+        </div>
+
+        <div class="trust-grid">
+          <div class="trust">
+            <strong>Traitement local</strong>
+            <span>Les données sont transmises au logiciel installé sur le même PC.</span>
+          </div>
+          <div class="trust">
+            <strong>Aucune revente</strong>
+            <span>Les données ne sont ni vendues ni utilisées pour la publicité.</span>
+          </div>
+          <div class="trust">
+            <strong>Contrôle utilisateur</strong>
+            <span>Lecture, réponses et autorisations dépendent de votre configuration.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap layout">
+      <aside class="toc">
+        <div class="toc-title">Sommaire</div>
+        <a href="#editeur">Éditeur et contact</a>
+        <a href="#lecture">Ce que lit l’extension</a>
+        <a href="#destination">Où vont ces données</a>
+        <a href="#reponses">Réponses facultatives</a>
+        <a href="#conservation">Conservation et suppression</a>
+        <a href="#evolutions">Questions et évolutions</a>
+      </aside>
+
+      <article class="content">
+        <header class="content-header">
+          <strong>Scope Call Tracker · Confidentialité</strong>
+          <span>Version lisible et structurée de la politique applicable à l’extension.</span>
+        </header>
+
+        <section class="section" id="editeur">
+          <div class="section-number">01</div>
+          <h2>Éditeur et contact</h2>
+          <p>Scope-RottW · <a href="mailto:stylance69@gmail.com">stylance69@gmail.com</a>.</p>
+        </section>
+
+        <section class="section" id="lecture">
+          <div class="section-number">02</div>
+          <h2>Ce que lit l’extension</h2>
+          <p>Après configuration d’un salon et autorisation de son site, l’extension lit dans le chat choisi les pseudos, textes des messages et identifiants de messages disponibles. Elle utilise l’adresse de la page pour identifier le bon salon. Elle peut lire le pseudo de votre compte connecté quand le site l’affiche, pour éviter de répondre à vos propres demandes.</p>
+          <p>L’autorisation du navigateur porte sur le site ; le lecteur est limité aux adresses de salons que vous avez configurées et activées. Il ne parcourt pas votre historique de navigation et ne consulte pas les cookies, mots de passe ou requêtes réseau. Il ne capture pas l’écran. L’OCR est une fonction séparée du logiciel Windows.</p>
+          <div class="callout">L’extension agit uniquement dans le cadre des salons configurés et autorisés par l’utilisateur.</div>
+        </section>
+
+        <section class="section" id="destination">
+          <div class="section-number">03</div>
+          <h2>Où vont ces données</h2>
+          <p>Les messages et informations du salon sont transmis au logiciel Scope Call Tracker installé sur le même PC, par la liaison native locale du navigateur. Aucun serveur de l’éditeur, outil publicitaire ou service d’analyse ne reçoit ces données. Elles ne sont ni vendues ni utilisées pour la publicité.</p>
+          <p>Le navigateur conserve localement les profils, adresses de salons, sélecteurs et autorisations de rédaction. Scope conserve localement les calls, leur historique, les réglages, les éléments nécessaires au suivi des doublons et les reçus des réponses. Les captures OCR ne sont pas enregistrées par l’extension.</p>
+        </section>
+
+        <section class="section" id="reponses">
+          <div class="section-number">04</div>
+          <h2>Réponses facultatives</h2>
+          <p>Les réponses sont désactivées par défaut. Vous devez autoriser la rédaction dans le profil du salon et choisir le mode manuel ou automatique dans Scope. Le mode automatique envoie des réponses fixes sans validation de chaque message. En mode manuel, chaque réponse nécessite votre clic dans Scope.</p>
+          <p>Quand vous activez l’envoi, la réponse est publiée sur le site choisi avec le compte connecté dans le navigateur. Elle devient visible selon les règles de ce site. L’extension utilise son champ de rédaction et son bouton d’envoi ; un brouillon ou une saisie en cours bloque cette opération. Le site destinataire applique sa propre politique de confidentialité.</p>
+        </section>
+
+        <section class="section" id="conservation">
+          <div class="section-number">05</div>
+          <h2>Conservation et suppression</h2>
+          <p>Les profils restent sur votre appareil jusqu’à leur suppression ou la désinstallation de l’extension. Les données du logiciel Windows sont conservées séparément, y compris après désinstallation ou mise à jour, pour préserver l’historique. Vous pouvez supprimer manuellement vos données dans Scope ou, logiciel fermé et après sauvegarde si souhaitée, son dossier utilisateur ScopeCallTracker. Désinstaller seulement l’extension n’efface pas l’historique de Scope.</p>
+          <p>Retirer l’autorisation d’un site bloque sa lecture par l’extension. Pause lecture dans Scope suspend le traitement. Les messages déjà publiés sur un site doivent être supprimés via les fonctions de ce site lorsqu’elles le permettent.</p>
+        </section>
+
+        <section class="section" id="evolutions">
+          <div class="section-number">06</div>
+          <h2>Questions et évolutions</h2>
+          <p>Contactez Scope-RottW à l’adresse ci-dessus pour toute question sur ces traitements. Une évolution de la collecte ou de la transmission sera décrite dans une mise à jour de cette politique et soumise aux autorisations nécessaires.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 Scope-RottW · Scope Call Tracker</span>
+      <span>Politique de confidentialité · Extension 0.6.0</span>
+    </div>
+  </footer>
+</body>
+</html>
